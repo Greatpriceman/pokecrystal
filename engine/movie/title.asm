@@ -68,13 +68,13 @@ _TitleScreen:
 	call ByteFill
 ; lines 8-9
 	hlbgcoord 0, 8
-	ld bc, 2 * BG_MAP_WIDTH
+	ld bc, BG_MAP_WIDTH
 	ld a, 6
 	call ByteFill
 
 ; 'CRYSTAL VERSION'
 	hlbgcoord 5, 9
-	ld bc, NAME_LENGTH ; length of version text
+	ld bc, BG_MAP_WIDTH ; length of version text
 	ld a, 1
 	call ByteFill
 
@@ -368,7 +368,7 @@ TitleSuicuneGFX:
 INCBIN "gfx/title/suicune.2bpp.lz"
 
 TitleLogoGFX:
-INCBIN "gfx/title/logo.2bpp.lz"
+INCBIN "gfx/title/tokyomalogo.2bpp.lz"
 
 TitleCrystalGFX:
 INCBIN "gfx/title/crystal.2bpp.lz"

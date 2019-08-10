@@ -202,8 +202,8 @@ INCLUDE "engine/events/buena_menu.asm"
 
 SECTION "bank13", ROMX
 
-INCLUDE "engine/tilesets/map_palettes.asm"
-INCLUDE "gfx/tileset_palette_maps.asm"
+;INCLUDE "engine/tilesets/map_palettes.asm"
+;INCLUDE "gfx/tileset_palette_maps.asm"
 INCLUDE "data/collision_permissions.asm"
 INCLUDE "engine/menus/empty_sram.asm"
 INCLUDE "engine/menus/savemenu_copytilemapatonce.asm"
@@ -469,7 +469,7 @@ INCLUDE "gfx/pokemon/kanto_frames.asm"
 SECTION "Font Inversed", ROMX
 
 FontInversed:
-INCBIN "gfx/font/font_inversed.1bpp"
+INCBIN "gfx/font/font_inversed2.1bpp"
 
 
 SECTION "Pic Animations 3", ROMX
