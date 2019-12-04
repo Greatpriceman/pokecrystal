@@ -352,7 +352,7 @@ CopyWarpData::
 	ld bc, 2 ; warp number
 	add hl, bc
 	ld a, [hli]
-	cp $ff
+	cp -1
 	jr nz, .skip
 	ld hl, wBackupWarpNumber
 	ld a, [hli]
@@ -391,6 +391,7 @@ CheckIndoorMap::
 	ret
 
 ; unused
+UnreferencedCheckEnvironment::
 	cp INDOOR
 	ret z
 	cp GATE
@@ -619,7 +620,7 @@ ReadObjectEvents::
 ; Fill the remaining sprite IDs and y coords with 0 and -1, respectively.
 ; Bleeds into wObjectMasks due to a bug.  Uncomment the above subtraction
 ; to fix.
-	ld bc, OBJECT_LENGTH
+	ld bc, MAPOBJECT_LENGTH
 .loop
 	ld [hl],  0
 	inc hl
@@ -653,7 +654,7 @@ CopyMapObjectEvents::
 	jr nz, .loop2
 
 	pop hl
-	ld bc, OBJECT_LENGTH
+	ld bc, MAPOBJECT_LENGTH
 	add hl, bc
 	pop bc
 	dec c
@@ -662,13 +663,13 @@ CopyMapObjectEvents::
 
 ClearObjectStructs::
 	ld hl, wObject1Struct
-	ld bc, OBJECT_STRUCT_LENGTH * (NUM_OBJECT_STRUCTS - 1)
+	ld bc, OBJECT_LENGTH * (NUM_OBJECT_STRUCTS - 1)
 	xor a
 	call ByteFill
 
 ; Just to make sure (this is rather pointless)
 	ld hl, wObject1Struct
-	ld de, OBJECT_STRUCT_LENGTH
+	ld de, OBJECT_LENGTH
 	ld c, NUM_OBJECT_STRUCTS - 1
 	xor a
 .loop
@@ -701,7 +702,7 @@ endr
 	ld [wXCoord], a
 	; destination warp number
 	ld a, [hli]
-	cp $ff
+	cp -1
 	jr nz, .skip
 	call .backup
 
@@ -1136,14 +1137,14 @@ BGEvent::
 	jumptext BGEventText
 
 BGEventText::
-	text_far UnknownText_0x1c46fc
+	text_far _BGEventText
 	text_end
 
 CoordinatesEvent::
 	jumptext CoordinatesEventText
 
 CoordinatesEventText::
-	text_far UnknownText_0x1c4706
+	text_far _CoordinatesEventText
 	text_end
 
 CheckObjectMask::
