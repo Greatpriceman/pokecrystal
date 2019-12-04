@@ -58,6 +58,14 @@ OpenText::
 	rst Bankswitch
 
 	ret
+	
+IchikoPreLoad::
+	ld a, BANK(IchikoLoad)
+	rst Bankswitch
+	call IchikoLoad
+	pop af
+	rst Bankswitch	
+	ret
 
 _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap::
 	ldh a, [hOAMUpdate]

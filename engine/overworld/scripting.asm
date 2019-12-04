@@ -233,6 +233,10 @@ ScriptCommandTable:
 	dw Script_getname                    ; a7
 	dw Script_wait                       ; a8
 	dw Script_checksave                  ; a9
+	dw Script_openmugshot				 ; aa
+;Character Mugshot script Macros
+	dw Script_ichiko					;ab
+	
 
 StartScript:
 	ld hl, wScriptFlags
@@ -2621,6 +2625,14 @@ Script_opentext:
 
 	call OpenText
 	ret
+	
+Script_openmugshot:
+; New Script Command 0xaa?
+	hlcoord 0, 6
+	ld b, 4
+	ld c, 4
+	jp Textbox
+	ret
 
 Script_refreshscreen:
 ; script command 0x48
@@ -2823,3 +2835,8 @@ Script_checksave:
 
 .byte
 	db 0
+
+Script_ichiko:
+	call IchikoPreLoad
+	ret
+

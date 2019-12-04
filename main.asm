@@ -688,6 +688,10 @@ INCBIN "gfx/pokegear/pokegear.2bpp.lz"
 INCLUDE "engine/pokemon/european_mail.asm"
 
 
+SECTION "Mugshot Data 1", ROMX
+INCLUDE "engine/mugshots.asm"
+
+
 SECTION "Battle Tower Text", ROMX
 
 INCLUDE "data/battle_tower/trainer_text.asm"

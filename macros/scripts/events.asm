@@ -1062,3 +1062,41 @@ ENDM
 checksave: MACRO
 	db checksave_command
 ENDM
+
+	enum openmugshot_command ; $aa
+openmugshot: MACRO
+	db openmugshot_command
+ENDM
+
+	enum ichiko_command ; $ab
+ichiko: MACRO
+	db ichiko_command
+ENDM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

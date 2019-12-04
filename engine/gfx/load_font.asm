@@ -27,9 +27,9 @@ _LoadStandardFont::
 	ld hl, vTiles1 tile $20
 	lb bc, BANK(Font), 26 ; "a" to "z" (skip "┌" to "┘")
 	call Get1bpp_2
-	ld de, Font + 64 * LEN_1BPP_TILE
-	ld hl, vTiles1 tile $40
-	lb bc, BANK(Font), 32 ; $co to "←"
+	ld de, Font + 80 * LEN_1BPP_TILE
+	ld hl, vTiles1 tile $50
+	lb bc, BANK(Font), 16 ; $co to "←"
 	call Get1bpp_2
 	ld de, Font + 96 * LEN_1BPP_TILE
 	ld hl, vTiles1 tile $60
