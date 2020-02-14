@@ -1,6 +1,6 @@
 ; Audio interfaces.
 
-MapSetup_Sound_Off::
+InitSound::
 	push hl
 	push de
 	push bc
@@ -8,11 +8,11 @@ MapSetup_Sound_Off::
 
 	ldh a, [hROMBank]
 	push af
-	ld a, BANK(_MapSetup_Sound_Off)
+	ld a, BANK(_InitSound)
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
 
-	call _MapSetup_Sound_Off
+	call _InitSound
 
 	pop af
 	ldh [hROMBank], a
@@ -71,7 +71,7 @@ PlayMusic::
 
 	ldh a, [hROMBank]
 	push af
-	ld a, BANK(_PlayMusic) ; aka BANK(_MapSetup_Sound_Off)
+	ld a, BANK(_PlayMusic) ; aka BANK(_InitSound)
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
 
@@ -83,7 +83,7 @@ PlayMusic::
 	jr .end
 
 .nomusic
-	call _MapSetup_Sound_Off
+	call _InitSound
 
 .end
 	pop af
@@ -277,11 +277,11 @@ MaxVolume::
 	ret
 
 LowVolume::
-	ld a, $33 ; 40%
+	ld a, $33 ; 50%
 	ld [wVolume], a
 	ret
 
-VolumeOff::
+MinVolume::
 	xor a
 	ld [wVolume], a
 	ret
@@ -359,7 +359,8 @@ PlayMapMusic::
 	pop hl
 	ret
 
-EnterMapMusic::
+PlayMapMusicBike::
+; If the player's on a bike, play the bike music instead of the map music
 	push hl
 	push de
 	push bc
@@ -524,7 +525,7 @@ CheckSFX::
 TerminateExpBarSound::
 	xor a
 	ld [wChannel5Flags1], a
-	ld [wSoundInput], a
+	ld [wPitchSweep], a
 	ldh [rNR10], a
 	ldh [rNR11], a
 	ldh [rNR12], a
@@ -539,7 +540,7 @@ ChannelsOff::
 	ld [wChannel2Flags1], a
 	ld [wChannel3Flags1], a
 	ld [wChannel4Flags1], a
-	ld [wSoundInput], a
+	ld [wPitchSweep], a
 	ret
 
 SFXChannelsOff::
@@ -549,5 +550,5 @@ SFXChannelsOff::
 	ld [wChannel6Flags1], a
 	ld [wChannel7Flags1], a
 	ld [wChannel8Flags1], a
-	ld [wSoundInput], a
+	ld [wPitchSweep], a
 	ret

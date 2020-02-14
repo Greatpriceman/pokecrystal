@@ -44,7 +44,7 @@ BigDollScript:
 GameConsoleScript:
 	describedecoration DECODESC_CONSOLE
 
-PlayersHousePosterScript:
+PosterScript:
 	conditional_event EVENT_PLAYERS_ROOM_POSTER, .Script
 
 .Script:
@@ -119,11 +119,11 @@ PlayersRadioText4:
 	text "#MON!"
 	line "#MON CHANNEL…"
 	done
-	
+
 TextMugTest:
 	text "WTXN 101.5"
 	line "Text testing"
-	
+
 	para "it's Time for New"
 	line "#MON Fast Tra-"
 	cont "ffic."
@@ -141,7 +141,7 @@ PlayersHouse2F_MapEvents:
 	bg_event  2,  1, BGEVENT_UP, PlayersHousePCScript
 	bg_event  3,  1, BGEVENT_READ, PlayersHouseRadioScript
 	bg_event  5,  1, BGEVENT_READ, PlayersHouseBookshelfScript
-	bg_event  6,  1, BGEVENT_IFSET, PlayersHousePosterScript
+	bg_event  6,  0, BGEVENT_IFSET, PosterScript
 
 	db 5 ; object events
 	object_event  4,  2, SPRITE_CONSOLE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GameConsoleScript, EVENT_PLAYERS_HOUSE_2F_CONSOLE
@@ -149,6 +149,3 @@ PlayersHouse2F_MapEvents:
 	object_event  5,  4, SPRITE_DOLL_2, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll2Script, EVENT_PLAYERS_HOUSE_2F_DOLL_2
 	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigDollScript, EVENT_PLAYERS_HOUSE_2F_BIG_DOLL
 	object_event  2,  5, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MugshotTestPrompt, 0
-
-
-
